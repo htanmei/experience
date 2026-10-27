@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    ul {
+      display: flex;
+      margin: 0 20px;
+    }
+
+
+
+    .item img {
+      width: 100%;
+      height: 500px;
+      object-fit: cover;
+    }
+
+    li {
+      width: 10px;
+      height: 10px;
+      border: 1px solid black;
+      background-color: transparent;
+      border-radius: 50%;
+      list-style: none;
+      margin: 0 10px;
+    }
+
+    li.active {
+      width: 10px;
+      height: 10px;
+      background-color: black;
+
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="item">
+      <img src="./source/01.jpg" alt="">
+    </div>
+    <div class="footer">
+      <p>让海风穿透发梢，在钢铁森林的边缘做一场不被定义的梦。</p>
+      <ul class="nav">
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+        <li></li>
+      </ul>
+    </div>
+  </div>
+  <script>
+    // 创建数组
+    let arr = [{ URL: './source/01.jpg', title: '让海风穿透发梢，在钢铁森林的边缘做一场不被定义的梦。', color: '#72B2E8' },
+    { URL: './source/02.jpg', title: '借抹林间漏下的光影，把夏日的温柔悄悄私藏。', color: '#6AAA49' },
+    { URL: './source/03.jpg', title: '提一盏春色入画，在旧时光的圆窗里做一场千年的旧梦。', color: '#2B3B4E' },
+    { URL: './source/04.jpg', title: '穿过霓虹与流转的夜色，在车厢微晃的风里，做最清醒的自己。', color: '#1E1E1E' },
+    { URL: './source/05.jpg', title: '让大雪掩埋尘世喧嚣，在纯白的梦境里，与最安静的自己重逢。', color: '#000000' },
+    { URL: './source/06.jpg', title: '放任光影将情绪切割，在昏暗的角落里，捕捉灵魂最真实的底色。', color: '#000000' },
+    { URL: './source/07.jpg', title: '让落日余晖勾勒侧颜，把旅途的浪漫融化在掌心的微甜里。', color: '#000000' },
+    ]
+    // 获取随机数
+    let r = Math.floor(Math.random() * arr.length)
+    // 获取对象
+    let img = document.querySelector('img')
+    img.src = arr[r].URL
+    let s = document.querySelector('p')
+    s.innerHTML = arr[r].title
+    let lis = document.querySelector(`li:nth-child(${r + 1})`)
+    lis.classList.add('active')
+
+
+  </script>
+
+
+</body>
+
+</html>
