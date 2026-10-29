@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>3D悬停图片效果</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      background-color: #1a252c;
+    }
+
+    .box {
+      margin: 50% auto;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-sizing: border-box;
+
+    }
+
+    .box .item {
+      position: relative;
+      margin: 0 2px;
+      width: 120px;
+      height: 120px;
+      position: relative;
+      /* 添加倒影 */
+      -webkit-box-reflect: below 1px linear-gradient(transparent, #0002);
+      transition: all .5s;
+
+    }
+
+    .box .item img {
+      position: relative;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .box .item:hover {
+      transform: scale(1.2);
+      gap: 2px;
+      z-index: 1;
+    }
+
+    /* 鼠标经过时，其他图片变化 */
+    .box:hover .item:not(:hover) {
+      transform: perspective(500px) rotateY(45deg);
+      scale: 0.9s;
+      margin: 0 -15px;
+    }
+
+    .box .item:hover~.item {
+      transform: perspective(500px) rotateY(-45deg);
+      scale: 0.9s;
+      margin: 0 -15px;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="box">
+    <div class="item"><img src="./01.png" alt=""></div>
+    <div class="item"><img src="./02.png" alt=""></div>
+    <div class="item"><img src="./03.png" alt=""></div>
+    <div class="item"><img src="./04.png" alt=""></div>
+    <div class="item"><img src="./05.png" alt=""></div>
+  </div>
+
+</body>
+
+</html>
