@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>我的作品导航</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        body {
+            background: linear-gradient(135deg, #1e1e24 0%, #2a2a35 100%);
+            color: white;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+        }
+        h1 { font-size: 2.5rem; margin-bottom: 3rem; letter-spacing: 2px; }
+        .links { display: flex; gap: 2rem; }
+        a {
+            text-decoration: none;
+            color: white;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 1.5rem 3rem;
+            border-radius: 12px;
+            font-size: 1.2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+        }
+        a:hover {
+            background: #3b82f6;
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.4);
+            border-color: #3b82f6;
+        }
+    </style>
+</head>
+<body>
+    <h1>我的项目合集</h1>
+    <div class="links">
+        <a href="./album/">📸 流光相册</a>
+        <a href="./slideshow/">✨ 幻灯片特效</a>
+    </div>
+</body>
+</html>
