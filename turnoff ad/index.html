@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>关闭广告示例</title>
+  <style>
+    h1 {
+     
+      /* 关键：让元素宽度收缩到文字本身，渐变范围=文字范围 */
+      width:fit-content;
+      /* 让h1有渐变文字效果 */
+      background: linear-gradient(45deg, #7db1e9, #d86cd6);
+      -webkit-background-clip: text;/*背景裁剪到文字，需要webkit前缀*/
+      background-clip: text;
+      color: transparent;/*文字颜色透明*/
+      animation: fadeIn 4s linear;
+      font-size: 50px;
+      /* color:rgb(48, 136, 212); */
+      margin:20px auto;
+      text-align:center;
+    }
+    .box1 {
+      position: fixed;
+      display:flex;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width:500px;
+      height:500px;
+      background-color: #ccc;
+      /* 添加广告背景图 */
+      background-image:url(../album/source/02.png);
+      background-size: cover;
+      box-shadow: 0 0 10px #000;
+      /* 添加倒影 */
+      -webkit-box-reflect: right 0px linear-gradient(transparent,  #0005);
+    }
+    .box2{
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      width: 200px;
+      height: 30px;
+      border-radius: 15px;
+      background-color: #ccc;
+      color: #a12c2c;
+      text-align: center;
+      box-shadow: 0 0 5px #000;
+      line-height :30px;
+      cursor: pointer;
+    }
+    .dots{
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    display: flex;
+    gap: 10px;
+    list-style: none;
+    }
+    .transition {
+      animation: in 2s linear;
+    }
+    li{
+      width: 20px;
+      height: 20px;
+      background-color: #fff;
+      border-radius: 50%;
+      border: 1px solid #000;
+    }
+    .active{
+      background-color:white;
+      box-shadow: inset 0 0 5px #000;
+    }
+    /* 给h1添加渐入效果 */
+    @keyframes fadeIn {
+      0% { opacity: 0; }
+      100% { opacity: 1; }
+    }
+  </style>
+</head>
+<body>
+    <h1>关闭广告示例</h1>
+    <div class="box1">
+   
+      <ul class="dots">
+        <li class="dot1 active"></li>
+        <li class="dot2"></li>
+        <li class="dot3"></li>
+        <li class="dot4"></li>   
+      </ul>
+      <div class="box2">X关闭广告</div>
+    </div>
+    <script>
+      const bkimg=[{src:'../album/source/02.png'},{src:'../album/source/03.png'},{src:'../album/source/04.png'},{src:'../album/source/05.png'}];
+      const dots=document.querySelectorAll('.dots li');
+      // 获取事件源
+      const box2=document.querySelector('.box2');
+      const box1=document.querySelector('.box1');
+      // 事件监听
+      box2.addEventListener('click',function(){
+        box1.style.display='none';
+      })
+      // 背景图的顺序播放
+      let i=0;
+      setInterval(function(){
+        box1.classList.add('transition');
+        box1.style.backgroundImage =`url(${bkimg[i].src})`;
+        dots.forEach(d => d.classList.remove('active'));
+        dots[i].classList.add('active');
+        i++;
+        box1.classList.remove('transition');
+        if(i>=bkimg.length){ 
+          i=0;
+        }
+      },2000)
+    </script> 
+  
+</body>
+</html>
